@@ -1,0 +1,49 @@
+Subject,Properties,Object,DataType
+Kunffy,ObjectID,6,xsd:integer
+Kunffy,Title,Two Gypsies,xsd:string
+Kunffy,MediaType,Image,xsd:string
+Kunffy,FileFormat,JPG,xsd:string
+Kunffy,Language,German,xsd:string
+Kunffy,Keywords_(GND),"Kunffy, Lajos (GND: 132187388)",xsd:string
+Kunffy,Persons_(GND),https://portal.dnb.de/opac.htm?method=simpleSearch&cqlMode=true&query=nid%3D132187388,xsd:anyURI
+Kunffy,InstitutionOrCollection,Hungarian National Gallery (presumed),xsd:string
+Kunffy,DateOfOrigin,1907,xsd:gYear
+Kunffy,Place_(GND),Hungary,xsd:string
+Kunffy,Object_type_(CIDOC-CRM),E22_Human-Made_Object,xsd:string
+Kunffy,ContextOrComment,"In the early 20th century, Kunffy portrayed local rural Romani people. He depicted them as powerful, unbroken counter-images to the “respectable Hungarian society.”",xsd:string
+Kunffy,ContentAnnotations,"Stylized clothing, long hair, serious expressions; representation as strong, earthy “types.” No threat, but respectful portrayal. Still, ethnographic stereotyping is present.",xsd:string
+Kunffy,ImageOrText annotations,"Hairstyle, clothing, posture, color scheme",xsd:string
+Kunffy,AccessRights,Internal,xsd:string
+Kunffy,UsageLicense,Protected by archival law,xsd:string
+Kunffy,LinkedObjects,—,xsd:string
+Kunffy,DigitalObjectURL,https://wikioo.org/de/paintings.php?refarticle=9FTHJH&titlepainting=Two%20Gipsies&artistname=Kunffy%20Lajos,xsd:anyURI
+Kunffy,DateOfEntry,09.04.2025,xsd:date
+Kunffy,ProjectAffiliation_(TP),TP1,xsd:string
+Kunffy,ResearchCategory,"Visual Culture, Ethnographic Representation, Stereotype Analysis",xsd:string
+Kunffy,Machine-generatedAnnotations,Not available,xsd:string
+Kunffy,FramingCategories,"Masculine strength', 'stereotypical earthiness'",xsd:string
+Kunffy,DiscriminationContext,"Stereotyping as ethnographic type without individual biography; respectful yet distanced. Not a discriminatory framing, but generalization remains.",xsd:string
+Kunffy,CareStatus,No,xsd:string
+Kunffy,Legal StatusOrMoving Wall,Not yet public,xsd:string
+Kunffy,WorkshopOrTeachingContext,Not used,xsd:string
+Kunffy,PublicationStatus,Not yet published,xsd:string
+Kunffy,QualityAssuranceStatus,Validated,xsd:string
+Kunffy,RelatedResearchQuestions,How do ethnographic-stereotypical representations of Roma affect contemporary memory?,xsd:string
+Kunffy,Editor,Andre Raatzsch,xsd:string
+Kunffy,FullName,"Kunffy, Lajos",xsd:string
+Kunffy,GNDIdentifier,https://d-nb.info/gnd/132187388,xsd:anyURI
+Kunffy,AlternativeNames,"Kúnffy, Lajos (Thieme-Becker); Kunfy, Lajos (Thieme-Becker); Kúnfy, Lajos; Kunfy, Ludwig",xsd:string
+Kunffy,Gender,Male,xsd:string
+Kunffy,DateOfBirth,1869,xsd:gYear
+Kunffy,DateOfDeath,1962,xsd:gYear
+Kunffy,NationalityOrCountry,Hungary (XA-HU),xsd:string
+Kunffy,PlaceOfBirth,"Orci, Somogy County",xsd:string
+Kunffy,PlaceOfStudy,Munich (Academy of Fine Arts),xsd:string
+Kunffy,PlaceOfActivity,Budapest,xsd:string
+Kunffy,PlaceOfDeath,Kaposvár,xsd:string
+Kunffy,Occupations,Artist; Painter; Jurist,xsd:string
+Kunffy,EducationOrCareerInfo,Enrolled in 1891 at the Academy of Fine Arts in Munich,xsd:string
+Kunffy,PersonalNetwork,Gabriel von Hackl (teacher),xsd:string
+Kunffy,Sources,Matriculation records (AdBK Munich); AKL; LCAuth; Wikipedia (Hungarian),xsd:string
+Kunffy,Classification,"13.4p Persons related to painting, drawing, graphic art",xsd:string
+Kunffy,EntityType,Person (piz),xsd:string

@@ -9,18 +9,26 @@ package core;
  *
  * @author elahi
  */
-public class Tripple {
+public class Tripple implements Prefixes{
 
     private String subject = null;
     private String property = null;
     private String object = null;
     private String datatype = null;
-
+    private String tripleElement = null;
+    
+    
     public Tripple(String[] row) {
-        this.subject = row[0];
-        this.property = row[1];
-        this.object = row[2];
-        this.datatype = row[3];
+        this.subject = this.addUriSyntax(ENTITY,this.removeSpace(row[0]));
+        this.property = this.addUriSyntax(PROPERTY,this.removeSpace(row[1]));
+        this.object = this.removeSpace(row[2]);
+        this.datatype = this.removeSpace(row[3]);
+        if(this.datatype.contains("xsd:string")){
+            String prefix="X";
+            this.object=this.addUriSyntax(prefix,this.object);
+        }
+        this.tripleElement=this.subject+" "+this.property+" "+this.object+".";
+            
     }
 
     public String getSubject() {
@@ -37,6 +45,18 @@ public class Tripple {
 
     public String getDatatype() {
         return datatype;
+    }
+    
+    public String getTripleElement() {
+        return tripleElement;
+    }
+   
+    private String removeSpace(String string) {
+        return string.replace(" ", "_");
+    }
+
+    private String addUriSyntax(String prefix,String value) {
+        return "<"+prefix+value+">";
     }
 
 }

@@ -1,0 +1,9 @@
+dir
+clear
+git remote /v
+git remote -v
+git push
+git add .
+git add.
+git add 
+git add .

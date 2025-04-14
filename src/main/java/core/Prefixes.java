@@ -4,13 +4,21 @@
  */
 package core;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  *
  * @author elahi
  */
 public interface Prefixes {
-
-    public String PROPERTY = "Z";
-    public String ENTITY = "Z";
-
+    public static String ENTITY="entity";
+    public static String PROPERTY="property";
+    public static String OBJRCT="OBJRCT";
+    public static String GND="GND:";
+    public static String DNB="DNB:";
+    public static String baseUri="http://localhost:9999/digitalEnvornment/";
+    public static Map<String, String> prefixes=new HashMap<>();
 }

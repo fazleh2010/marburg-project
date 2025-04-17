@@ -26,11 +26,12 @@ public class Tripple implements Prefixes {
         Prefixes.prefixes.put(ENTITY, "<"+baseUri+ENTITY+"/"+"XXX>");
         Prefixes.prefixes.put("GND", "<"+baseUri+PROPERTY+"/GMD/"+"XXX>");
         Prefixes.prefixes.put("DNB", "<"+baseUri+PROPERTY+"/DNB/"+"XXX>");
-        Prefixes.prefixes.put("xsd:string", "\"XXX\"^^xsd:string");
-        Prefixes.prefixes.put("xsd:integer", "\"XXX\"^^xsd:integer");
-        Prefixes.prefixes.put("xsd:gYear", "\"XXX\"^^xsd:gYear");
-        Prefixes.prefixes.put("xsd:date", "\"XXX\"^^xsd:date");
-        Prefixes.prefixes.put("anyURI","<XXX>" );
+        Prefixes.prefixes.put("LinkedObject", "<"+baseUri+PROPERTY+"/"+"XXX>");
+        Prefixes.prefixes.put("xsd:string", "\"XXX\"^^<http://www.w3.org/2001/XMLSchema#string>");
+        Prefixes.prefixes.put("xsd:integer", "\"XXX\"^^<http://www.w3.org/2001/XMLSchema#integer>");
+        Prefixes.prefixes.put("xsd:gYear", "\"XXX\"^^<http://www.w3.org/2001/XMLSchema#gYear>");
+        Prefixes.prefixes.put("xsd:date", "\"XXX\"^^<http://www.w3.org/2001/XMLSchema#date>");
+        Prefixes.prefixes.put("anyURI","<XXX>");
        
     }
 

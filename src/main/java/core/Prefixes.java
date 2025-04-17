@@ -16,7 +16,7 @@ import java.util.Map;
 public interface Prefixes {
     public static String ENTITY="entity";
     public static String PROPERTY="property";
-    public static String OBJRCT="OBJRCT";
+    public static String OBJRCT="object";
     public static String GND="GND:";
     public static String DNB="DNB:";
     public static String baseUri="http://localhost:9999/digitalEnvornment/";

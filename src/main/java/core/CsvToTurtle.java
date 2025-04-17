@@ -27,8 +27,8 @@ public class CsvToTurtle {
             }
 
             Tripple tripple = new Tripple(row);
-            System.out.println(tripple.getSubject() + ".." + tripple.getProperty() + ".." + tripple.getObject() + ".." + tripple.getDatatype());
-            System.out.println(tripple.getTripleElement());
+            //System.out.println(tripple.getSubject() + ".." + tripple.getProperty() + ".." + tripple.getObject() + ".." + tripple.getDatatype());
+            //System.out.println(tripple.getTripleElement());
             String line = tripple.getTripleElement() + "\n";
             str += line;
         }

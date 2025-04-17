@@ -1,1 +1,0 @@
-<http://localhost:9999/digitalEnvornment/entity/Kunffy> <http://localhost:9999/digitalEnvornment/property/LinkedBook> <http://localhost:9999/digitalEnvornment/entity/BECKMANN_MAX> .

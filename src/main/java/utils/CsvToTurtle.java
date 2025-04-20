@@ -4,6 +4,7 @@
  */
 package utils;
 
+import core.Prefixes;
 import core.Tripple;
 import java.io.File;
 import java.util.List;
@@ -35,6 +36,18 @@ public class CsvToTurtle {
         }
         FileFolderUtils.stringToFile(str, outputFile);
         System.out.println(str);
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        String entityDir = "dataset/english/";
+        String entityFileType = ".csv";
+        List<File> files = FileFolderUtils.getSpecificFiles(entityDir, Prefixes.ENTITY, entityFileType);
+        for (File inputFile : files) {
+            File outputFile = new File(entityDir + "output_" + inputFile.getName().replace(".csv", ".ttl"));
+            CsvToTurtle csvToTurtle = new CsvToTurtle(inputFile, outputFile);
+        }
+        //File inputFile=new File("dataset/english/entity_1.csv");
 
     }
 

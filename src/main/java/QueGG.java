@@ -1,5 +1,5 @@
 
-import core.CsvToTurtle;
+import utils.CsvToTurtle;
 import core.Prefixes;
 import java.io.File;
 import java.util.List;

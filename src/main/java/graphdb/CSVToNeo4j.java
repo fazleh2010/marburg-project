@@ -31,7 +31,7 @@ public class CSVToNeo4j implements AutoCloseable {
     private final String EMAIL = "email";
 
     public CSVToNeo4j() {
-         driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
+        driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
     }
 
     public void createNodeFromCsv(String csvFilePath, String NodeType) throws IOException {
@@ -53,7 +53,7 @@ public class CSVToNeo4j implements AutoCloseable {
             }
         }
     }
-    
+
     public void deleteAll() {
         try (Session session = driver.session()) {
             session.writeTransaction(tx -> {
@@ -63,13 +63,13 @@ public class CSVToNeo4j implements AutoCloseable {
             System.out.println("All nodes and relationships deleted.");
         }
     }
-    
-   public void listNodes() {
+
+    public void listNodes() {
         try (Session session = driver.session()) {
             Result result = session.run("MATCH (n) RETURN n");
 
             while (result.hasNext()) {
-                org.neo4j.driver.Record record  = result.next();
+                org.neo4j.driver.Record record = result.next();
                 Value nodeValue = record.get("n");
                 Map<String, Object> properties = nodeValue.asNode().asMap();
 
@@ -79,8 +79,6 @@ public class CSVToNeo4j implements AutoCloseable {
             }
         }
     }
-
-   
 
     @Override
     public void close() {

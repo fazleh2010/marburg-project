@@ -1,3 +1,5 @@
+package utils;
+
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.GraphDatabase;
@@ -9,10 +11,10 @@ import org.neo4j.driver.Value;
 
 import static org.neo4j.driver.Values.parameters;
 
-public class Neo4jExample2 implements AutoCloseable {
+public class Neo4jExTrans implements AutoCloseable {
     private final Driver driver;
 
-    public Neo4jExample2(String uri, String user, String password) {
+    public Neo4jExTrans(String uri, String user, String password) {
         driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
     }
 
@@ -40,7 +42,7 @@ public class Neo4jExample2 implements AutoCloseable {
 
     public static void main(String[] args) {
         String attribute="name";
-        try (Neo4jExample2 app = new Neo4jExample2("bolt://localhost:7687", "neo4j", "password")) {
+        try (Neo4jExTrans app = new Neo4jExTrans("bolt://localhost:7687", "neo4j", "password")) {
             app.createNode(attribute,"test");
         } catch (Exception e) {
             e.printStackTrace();

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package graphdb;
+package utils;
 
 import org.neo4j.driver.Value;
 import static org.neo4j.driver.Values.parameters;
@@ -25,6 +25,11 @@ public class CypherQuery {
 
     public void delete() {
         this.query = "MATCH (p:Person {name: $name}) DELETE p";
+        this.value = parameters("name", "Bob");
+    }
+    
+    public void deleteAll() {
+        this.query = "MATCH (n)\n" +"DETACH DELETE n;";
         this.value = parameters("name", "Bob");
     }
 

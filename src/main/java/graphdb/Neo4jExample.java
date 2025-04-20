@@ -17,39 +17,41 @@ import org.neo4j.driver.exceptions.ClientException;
  *
  * @author elahi
  */
-public class Neo4jExample implements Tasks{
+public class Neo4jExample implements Tasks {
 
     private static String uri = "bolt://localhost:7687"; // This points to the Docker-exposed Bolt port
     private static String user = "neo4j";
     private static String password = "password";
-    private static Driver driver = null;
 
+    public Neo4jExample() {
+    }
 
     public static void main(String[] args) {
-        String menu = CREATE;
-        Neo4jExample neo4jExample = new Neo4jExample();
-        neo4jExample.connectNeo4j();
+        String menu = Tasks.DELETE;
+        CSVToNeo4j importer = new CSVToNeo4j();
+        String csvPath = "dataset/english/people.csv"; // path to your CSV file
 
-        CypherQuery createCypher = new CypherQuery();
-        if (menu.contains(CREATE)) {
-            createCypher.create();
-            neo4jExample.executeQuery(menu, createCypher);
-        } else if (menu.contains(DELETE)) {
-            createCypher.delete();
-            neo4jExample.executeQuery(menu, createCypher);
-        } else if (menu.contains(CHECK)) {
-            neo4jExample.checkNodes();
+        try {
+            if (menu.contains(Tasks.CREATE)) {
+                String nodeType = "Person";
+                importer.createNodeFromCsv(csvPath, nodeType);
+
+            } else if (menu.contains(Tasks.DELETE)) {
+                importer.deleteAll();
+            }
+            else if (menu.contains(Tasks.CHECK)) {
+                importer.listNodes();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        driver.close();
-
+        /*else if (menu.contains(CHECK)) {
+            neo4jExample.checkNodes();
+        }*/
     }
 
-    public void connectNeo4j() {
-        this.driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
-    }
-
-    public void executeQuery(String menu, CypherQuery createCypher) {
+    /*public void executeQuery(String menu, CypherQuery createCypher) {
         String cypherQuery = createCypher.getCreateNodeStr();
         Value value = createCypher.getCreateNodeValue();
 
@@ -85,6 +87,7 @@ public class Neo4jExample implements Tasks{
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
+    
 
 }

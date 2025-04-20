@@ -18,7 +18,7 @@ public class QueGG {
     private static String password = "password";
 
     public static void main(String[] args) {
-        String menu = Tasks.DELETE;
+        String menu = Tasks.CREATE;
         String csvPath = "dataset/german/entity_1.csv"; // path to your CSV file
         Neo4jExecution app = new Neo4jExecution(uri, user, password);
 

@@ -1,9 +1,21 @@
 package utils;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.logging.*;
 
 /*
@@ -28,4 +40,53 @@ public class FileFolderUtils {
         }
 
     }
+    
+     public static List<File> getSpecificFiles(String propertyInputDir, String fileType,String fileExtension) {
+        List<File> properties = new ArrayList<>();
+        File file = new File(propertyInputDir);
+        String[] propertyFiles = file.list();
+
+        for (String propertyFile : propertyFiles) {
+            if (propertyFile.contains(fileType)&&propertyFile.contains(fileExtension)) {
+                properties.add(new File(propertyInputDir+propertyFile));
+            }
+        }
+        return properties;
+
+    }
+
+    public static void stringToFile(String content, String fileName)
+            throws IOException {
+        File file = new File(fileName);
+        if (file.exists()) {
+            file.delete();
+        }
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+        writer.write(content);
+        writer.close();
+
+    }
+
+    public static String fileToString(String fileName) {
+        InputStream is;
+        String fileAsString = null;
+        try {
+            is = new FileInputStream(fileName);
+            BufferedReader buf = new BufferedReader(new InputStreamReader(is));
+            String line = buf.readLine();
+            StringBuilder sb = new StringBuilder();
+            while (line != null) {
+                sb.append(line).append("\n");
+                line = buf.readLine();
+            }
+            fileAsString = sb.toString();
+            //System.out.println("Contents : " + fileAsString);
+        } catch (Exception ex) {
+            Logger.getLogger(FileFolderUtils.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return fileAsString;
+    }
+
 }

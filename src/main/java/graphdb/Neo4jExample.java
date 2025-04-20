@@ -17,18 +17,16 @@ import org.neo4j.driver.exceptions.ClientException;
  *
  * @author elahi
  */
-public class Neo4jExample {
+public class Neo4jExample implements Tasks{
 
     private static String uri = "bolt://localhost:7687"; // This points to the Docker-exposed Bolt port
     private static String user = "neo4j";
     private static String password = "password";
-    private static Driver driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
-    private static String CREATE = "CREATE";
-    private static String DELETE = "DELETE";
-    private static String CHECK = "CHECK";
+    private static Driver driver = null;
+
 
     public static void main(String[] args) {
-        String menu = DELETE;
+        String menu = CREATE;
         Neo4jExample neo4jExample = new Neo4jExample();
         neo4jExample.connectNeo4j();
 

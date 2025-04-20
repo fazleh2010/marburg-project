@@ -15,9 +15,11 @@ public class CypherQuery {
 
     private String query = null;
     private Value value = null;
+    
+    //"CREATE (p: {name: $name, age: $age}) RETURN p"
 
     public void create() {
-        this.query = "CREATE (p:Person {name: $name, age: $age}) RETURN p";
+        this.query = "CREATE (p: {name: $name, age: $age}) RETURN p";
         this.value = parameters("name", "Bob", "age", 42);
     }
 
@@ -32,6 +34,11 @@ public class CypherQuery {
 
     public Value getCreateNodeValue() {
         return value;
+    }
+
+    public void createTest() {
+        this.query = "CREATE (p: {name: $name, age: $age}) RETURN p";
+        this.value = parameters("name", "Bob", "age", 42);
     }
 
 }

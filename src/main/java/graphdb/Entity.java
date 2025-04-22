@@ -31,6 +31,7 @@ public class Entity {
     private final String Object = "Object";
     private final String SubjectType = "SubjectType";
     private final String PropertyTpe = "PropertyTpe";
+    private final String PropertyCategory = "PropertyCategory";
     private final String ObjectType = "ObjectType";
     private String subject = null;
     private String nodeType = null;
@@ -44,7 +45,8 @@ public class Entity {
         for (CSVRecord record : csvParser) {
             this.subject = record.get(Subject);
             this.nodeType = record.get(SubjectType);
-            Property property = new Property(record.get(Property), record.get(Object), record.get(PropertyTpe), record.get(ObjectType));
+            Property property = new Property(record.get(Property), record.get(Object), record.get(PropertyTpe),record.get(PropertyCategory), record.get(ObjectType));
+            //String propertyJoin=property.getPropertyCategory()+"("+property.getProperty()+")";
             this.properties.put(property.getProperty(), property.getObject());
         }
         this.properties.put("name",this.subject);

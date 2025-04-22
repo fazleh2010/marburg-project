@@ -13,13 +13,20 @@ public class Property {
     private String property = null;
     private String object = null;
     private String propertyTpe = null;
+    private String propertyCategory = null;
     private String objectType = null;
 
-    public Property(String property, String object, String propertyTpe, String objectType) {
-        this.property = property;
-        this.object = object;
-        this.propertyTpe = propertyTpe;
-        this.objectType = objectType;
+    public Property(String propertyT, String objectT, String propertyTpeT, String propertyCategoryT,String objectTypeT) {
+        this.property = propertyT;
+        this.object = objectT;
+        this.propertyTpe = propertyTpeT;
+        this.objectType = propertyCategoryT;
+        this.propertyCategory = objectTypeT;
+
+    }
+
+    public String getPropertyCategory() {
+        return propertyCategory;
     }
 
     public String getProperty() {

@@ -19,16 +19,21 @@ public class QueGG {
 
     public static void main(String[] args) {
         String menu = Tasks.CREATE;
-        String csvPath = "dataset/german/entity_2.csv"; // path to your CSV file
+        String dir = "dataset/german/input/"; // path to your CSV file
+        List<String> files = FileFolderUtils.getSpecificFiles(dir, "entity", ".csv");
         Neo4jExecution app = new Neo4jExecution(uri, user, password);
-
+        
         try {
-            if (menu.contains(Tasks.CREATE)) {
+            if (menu.contains(Tasks.CHECK)) {
                 try {
-                    Entity entity = new Entity(csvPath);
-                    Map<String, Object> properties = entity.getProperties();
-                    System.out.println(entity);
-                    app.createNodeWithProperties(entity.getNodeType(), properties);
+                    for (String csvPath : files) {
+                        System.out.println(csvPath);
+                        Entity entity = new Entity(csvPath);
+                        Map<String, Object> properties = entity.getProperties();
+                        System.out.println(entity);
+                        app.createNodeWithProperties(entity.getNodeType(), properties);
+                    }
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

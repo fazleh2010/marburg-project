@@ -42,8 +42,9 @@ public class CsvToTurtle {
     public static void main(String[] args) throws Exception {
         String entityDir = "dataset/english/";
         String entityFileType = ".csv";
-        List<File> files = FileFolderUtils.getSpecificFiles(entityDir, Prefixes.ENTITY, entityFileType);
-        for (File inputFile : files) {
+        List<String> files = FileFolderUtils.getSpecificFiles(entityDir, Prefixes.ENTITY, entityFileType);
+        for (String inputFileString : files) {
+            File inputFile=new File(entityDir+inputFileString);
             File outputFile = new File(entityDir + "output_" + inputFile.getName().replace(".csv", ".ttl"));
             CsvToTurtle csvToTurtle = new CsvToTurtle(inputFile, outputFile);
         }

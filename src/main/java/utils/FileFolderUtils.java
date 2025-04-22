@@ -41,14 +41,14 @@ public class FileFolderUtils {
 
     }
     
-     public static List<File> getSpecificFiles(String propertyInputDir, String fileType,String fileExtension) {
-        List<File> properties = new ArrayList<>();
+     public static List<String> getSpecificFiles(String propertyInputDir, String fileType,String fileExtension) {
+        List<String> properties = new ArrayList<>();
         File file = new File(propertyInputDir);
         String[] propertyFiles = file.list();
 
         for (String propertyFile : propertyFiles) {
             if (propertyFile.contains(fileType)&&propertyFile.contains(fileExtension)) {
-                properties.add(new File(propertyInputDir+propertyFile));
+                properties.add(propertyInputDir+propertyFile);
             }
         }
         return properties;

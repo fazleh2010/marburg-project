@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -38,18 +40,27 @@ public class Entity {
     private LinkedHashMap<String, Object> properties = new LinkedHashMap<>();
     //private List<Property> properties = new ArrayList<Property>();
 
-    public Entity(String csvFilePath) throws FileNotFoundException, IOException {
+    public Entity(String csvFilePath) {
 
-        FileReader reader = new FileReader(Paths.get(csvFilePath).toFile());
-        CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader());
-        for (CSVRecord record : csvParser) {
-            this.subject = record.get(Subject);
-            this.nodeType = record.get(SubjectType);
-            Property property = new Property(record.get(Property), record.get(Object), record.get(PropertyTpe),record.get(PropertyCategory), record.get(ObjectType));
-            //String propertyJoin=property.getPropertyCategory()+"("+property.getProperty()+")";
-            this.properties.put(property.getProperty(), property.getObject());
+        FileReader reader;
+        CSVParser csvParser;
+        try {
+            reader = new FileReader(Paths.get(csvFilePath).toFile());
+            csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader());
+            for (CSVRecord record : csvParser) {
+                this.subject = record.get(Subject);
+                this.nodeType = record.get(SubjectType);
+                Property property = new Property(record.get(Property), record.get(Object), record.get(PropertyTpe), record.get(PropertyCategory), record.get(ObjectType));
+                //String propertyJoin=property.getPropertyCategory()+"("+property.getProperty()+")";
+                this.properties.put(property.getProperty(), property.getObject());
+            }
+            this.properties.put("name", this.subject);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Entity.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Entity.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.properties.put("name",this.subject);
+
     }
 
     public Map<String, Object> getProperties() {

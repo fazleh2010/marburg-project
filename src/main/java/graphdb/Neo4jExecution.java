@@ -24,7 +24,6 @@ import static org.neo4j.driver.Values.parameters;
 public class Neo4jExecution implements AutoCloseable {
 
     private final Driver driver;
-    //MATCH (n:Painting) RETURN n LIMIT 25;
 
     public Neo4jExecution(String uri, String user, String password) {
         driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
@@ -72,19 +71,29 @@ public class Neo4jExecution implements AutoCloseable {
         }
     }
 
+    public void createRelationship(String name1, String name2, String relationshipType) {
+        try (Session session = driver.session()) {
+            session.writeTransaction((TransactionWork<Void>) tx -> {
+                tx.run(
+                        "MATCH (a:Painting {name: $name1}), (b:Painting {name: $name2}) "
+                        + "MERGE (a)-[r:" + relationshipType + "]->(b)",
+                        parameters("name1", name1, "name2", name2)
+                );
+                return null;
+            });
+        }
+    }
+
     public static void main(String[] args) {
         String csvPath = "dataset/german/entity_1.csv"; // path to your CSV file
         Map<String, Object> properties = new HashMap<>();
 
-        try {
-            Entity entity = new Entity(csvPath);
-            properties = entity.getProperties();
-            System.out.println(entity);
-            Neo4jExecution app = new Neo4jExecution("bolt://localhost:7687", "neo4j", "password");
-            app.createNodeWithProperties(entity.getNodeType(), properties);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
+        Entity entity = new Entity(csvPath);
+        properties = entity.getProperties();
+        System.out.println(entity);
+        Neo4jExecution app = new Neo4jExecution("bolt://localhost:7687", "neo4j", "password");
+        app.createNodeWithProperties(entity.getNodeType(), properties);
+        //app.createRelationship("KUNFFY_LAJOS", "BECKMANN_MAX", "KNOWS");
     }
+
 }

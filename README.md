@@ -1,82 +1,30 @@
 # Marburg Project 
 
-This command-line tool is designed for creating Research Environment for german art and culture
-
+This command-line tool is designed for creating nodes in graph database .
 ## Compile And Run
 <p>The source code can be compiled and run using <em>Java 11</em> and <em>Maven</em>.</p>
 
 ```shell script
-git clone https://github.com/fazleh2010/multilingual-grammar-generator.git 
+git clone https://github.com/fazleh2010/marburg-project.git 
 ```
 build the jar file
 ```shell script
 mvn clean package
 ```
-input_configuration_file: The file (inputConf.json) contains input parameter for the system:
-- languageCode: `en` (English), `de` (German), `it` (Italian), and `es` (Spanish)
-- inputDir: The input directory that contains lexical entries (i.e., csv files). 
-- outputDir: The output directory for the grammar (Json files).
-- csvToTurtle: the indicator for generating lemon (turtle file) from csv files.
-- turtleToProtoType: the indicator for generating grammar from lemon.
-````input configuration file
-{
-  "languageCode" : "en",
-  "inputDir" : "lexicon",
-  "outputDir" : "output",
-  "csvToTurtle" : true,
-  "turtleToProtoType" : true,
-  "protoTypeToQuestion" : false
- }
-
-````
-linked_data_configuration_file: The file (dbpedia.json) contains the input configuration for linked data.
-- endpoint: the sparql endpoint of the linked data.
-- prefix: the prefixes of Uris.
-
-````
-{
-  "endpoint" : "https://dbpedia.org/sparql",
-  "prefix" : {
-    "dbc" : "http://dbpedia.org/resource/Category:",
-    "dbo" : "http://dbpedia.org/ontology/",
-    "dbp" : "http://dbpedia.org/property/"
-...
-}
-   
-````
-
+- CREATE: add nodes in neo4j graph database .
+- RELATION: add relation between nodes . 
+- CREATE_RELATION: add nodes and relation in neo4j graph database .
+- DELETE: delete nodes .
 
 Run the system:
 ````shell script
-java -jar <jar file> <input_configuration_file> <linked_data_configuration_file>
+java -jar <jar file> <parameter> 
 
-english and DBpedia
-java -jar target/QuestionGrammarGenerator.jar inputConf_en.json dataset/dbpedia_en.json 
 
-german
-java -jar target/QuestionGrammarGenerator.jar inputConf_de.json dataset/dbpedia_de.json   
+Check the output in 
 
-spanish
-java -jar target/QuestionGrammarGenerator.jar inputConf_es.json dataset/dbpedia_es.json        
-
-italain
-java -jar target/QuestionGrammarGenerator.jar inputConf_it.json dataset/dbpedia_it.json  
-                                 
-````  
-
-The output can be seen the folder output/
-
-- output/en/ (English)
-- output/de/ (German)
-- output/it/ (Italian)
-- output/es/ (Spanish)
-
+- http://localhost:7474/browser/ (if the program is run in local host)
+- http://137.248.186.54:7474/browser/ (if run it from server)
 
 ## Developers
 * **Mohammad Fazleh Elahi**
-
-
-
-
-
-

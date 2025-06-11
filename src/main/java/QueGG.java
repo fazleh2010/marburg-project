@@ -2,7 +2,7 @@
 import utils.CsvToTurtle;
 import core.Prefixes;
 import graphdb.Entity;
-import graphdb.Neo4jExecution;
+import graphdb.Neo4j;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.System.exit;
@@ -27,7 +27,7 @@ public class QueGG {
     // RELATION
 
     public static void main(String[] args) {
-        String menu = CREATE+"_"+RELATION;
+        String menu = CREATE;
         //menu = DELETE;
         //menu =RELATION;
         
@@ -39,7 +39,7 @@ public class QueGG {
         
         String dir = "dataset/german/input/"; // path to your CSV file
         List<String> files = FileFolderUtils.getSpecificFiles(dir, "entity", ".csv");
-        Neo4jExecution app = new Neo4jExecution(uri, user, password);
+        Neo4j app = new Neo4j(uri, user, password);
 
         if (menu.contains(CREATE)) {
             for (String csvPath : files) {

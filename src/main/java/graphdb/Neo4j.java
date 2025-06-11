@@ -21,11 +21,11 @@ import org.neo4j.driver.Value;
 
 import static org.neo4j.driver.Values.parameters;
 
-public class Neo4jExecution implements AutoCloseable {
+public class Neo4j implements AutoCloseable {
 
     private final Driver driver;
 
-    public Neo4jExecution(String uri, String user, String password) {
+    public Neo4j(String uri, String user, String password) {
         driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
     }
 
@@ -34,14 +34,14 @@ public class Neo4jExecution implements AutoCloseable {
         driver.close();
     }
 
-    public void createNodeWithProperties(String label, Map<String, Object> properties) {
+    public void createNodeWithProperties(String nodeType, Map<String, Object> properties) {
         try (Session session = driver.session()) {
             session.writeTransaction((TransactionWork<Void>) tx -> {
-                String cypher = String.format("CREATE (n:%s) SET n += $props", label);
+                String cypher = String.format("CREATE (n:%s) SET n += $props", nodeType);
                 tx.run(cypher, parameters("props", properties));
                 return null;
             });
-            System.out.println("Node created with label: " + label + " and properties: " + properties);
+            System.out.println("Node created with label: " + nodeType + " and properties: " + properties);
         }
     }
 
@@ -91,7 +91,7 @@ public class Neo4jExecution implements AutoCloseable {
         Entity entity = new Entity(csvPath);
         properties = entity.getProperties();
         System.out.println(entity);
-        Neo4jExecution app = new Neo4jExecution("bolt://localhost:7687", "neo4j", "password");
+        Neo4j app = new Neo4j("bolt://localhost:7687", "neo4j", "password");
         app.createNodeWithProperties(entity.getNodeType(), properties);
         //app.createRelationship("KUNFFY_LAJOS", "BECKMANN_MAX", "KNOWS");
     }

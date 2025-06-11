@@ -24,13 +24,18 @@ public class Property {
         this.propertyCategory = objectTypeT;
 
     }
+    
+    public Property(String propertyT, String objectT) {
+        this.property = propertyT;
+        this.object = objectT;
+    }
 
     public String getPropertyCategory() {
         return propertyCategory;
     }
 
     public String getProperty() {
-        return property;
+        return this.replace(this.property);
     }
 
     public String getObject() {
@@ -48,6 +53,11 @@ public class Property {
     @Override
     public String toString() {
         return "Property{" + "property=" + property + ", object=" + object + ", propertyTpe=" + propertyTpe + ", objectType=" + objectType + '}';
+    }
+
+    private String replace(String propertyT) {
+        propertyT=propertyT.replace(" ", "_");
+        return propertyT;
     }
 
 }

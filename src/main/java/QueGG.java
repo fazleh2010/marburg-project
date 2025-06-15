@@ -27,9 +27,10 @@ public class QueGG {
     // RELATION
 
     public static void main(String[] args) {
-        String menu = CREATE;
+        String menu = CREATE+RELATION;
         //menu = DELETE;
         //menu =RELATION;
+        menu =args[0];
         
         for (int i = 0; i < args.length; i++) {
             if(i==0){
@@ -54,7 +55,7 @@ public class QueGG {
             }
 
         } if (menu.contains(RELATION)) {
-            app.createRelationship("KUNFFY_LAJOS", "BECKMANN_MAX", "Unknown");
+            app.createRelationship(Entity.OBJECT_ID,"Book_1", "Painting_2", "containsPainting");
         } if (menu.contains(DELETE)) {
             app.deleteAll();
         } if (menu.contains(CHECK)) {

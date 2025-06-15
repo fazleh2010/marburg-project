@@ -71,11 +71,11 @@ public class Neo4j implements AutoCloseable {
         }
     }
 
-    public void createRelationship(String name1, String name2, String relationshipType) {
+    public void createRelationship(String objectID,String name1, String name2, String relationshipType) {
         try (Session session = driver.session()) {
             session.writeTransaction((TransactionWork<Void>) tx -> {
                 tx.run(
-                        "MATCH (a:Painting {name: $name1}), (b:Painting {name: $name2}) "
+                        "MATCH (a:Book {"+objectID+": $name1}), (b:Painting {"+objectID+": $name2}) "
                         + "MERGE (a)-[r:" + relationshipType + "]->(b)",
                         parameters("name1", name1, "name2", name2)
                 );
@@ -83,6 +83,20 @@ public class Neo4j implements AutoCloseable {
             });
         }
     }
+    /*
+    public void createRelationship(String attributeName,String value1, String value2, String node1, String node2,String relationshipType) {
+        try (Session session = driver.session()) {
+            session.writeTransaction((TransactionWork<Void>) tx -> {
+                tx.run("MATCH (a:"+node1+" {"+attributeName+": $name1}), (b:"+node2+" {"+attributeName+": $name2}) "
+                        + "MERGE (a)-[r:" + relationshipType + "]->(b)",
+                        parameters("name1", value1, "name2", value2)
+                );
+                return null;
+            });
+        }
+    }
+
+    */
 
     public static void main(String[] args) {
         String csvPath = "dataset/german/entity_1.csv"; // path to your CSV file

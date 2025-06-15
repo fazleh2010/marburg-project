@@ -20,6 +20,10 @@ Run the system:
 ````shell script
 java -jar <jar file> <parameter> 
 
+java -jar target/QuestionGrammarGenerator.jar CREATE
+
+java -jar target/QuestionGrammarGenerator.jar RELATION
+
 java -jar target/QuestionGrammarGenerator.jar CREATE_RELATION
 
 java -jar target/QuestionGrammarGenerator.jar DELETE

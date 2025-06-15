@@ -29,7 +29,8 @@ public class QueGG {
     public static void main(String[] args) {
         String menu = CREATE+RELATION;
         //menu = DELETE;
-        //menu =RELATION;
+        //menu =RELATION;    
+        
         menu =args[0];
         
         for (int i = 0; i < args.length; i++) {

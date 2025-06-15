@@ -1,5 +1,22 @@
 # Marburg Project 
 
+## first run the neo4j docker container
+get the neo4j container from docker hub
+```
+docker pull neo4j
+```
+If docker container already in your machine then run neo4j container 
+```
+docker run \
+  --name neo4j \
+  -p7474:7474 -p7687:7687 \
+  -d \
+  -e NEO4J_AUTH=neo4j/password \
+  neo4j
+```
+
+
+
 This command-line tool is designed for creating nodes in graph database .
 ## Compile And Run
 <p>The source code can be compiled and run using <em>Java 11</em> and <em>Maven</em>.</p>

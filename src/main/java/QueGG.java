@@ -20,28 +20,29 @@ public class QueGG {
     public static String CHECK = "CHECK";
 
 
-    private static String uri = "bolt://localhost:7687"; // This points to the Docker-exposed Bolt port
-    private static String user = "neo4j";
-    private static String password = "password";
-    //MATCH (n:Painting) RETURN n LIMIT 25;
+      //MATCH (n:Painting) RETURN n LIMIT 25;
     // RELATION
 
     public static void main(String[] args) {
-        String menu = CREATE+RELATION;
-        //menu = DELETE;
-        //menu =RELATION;    
-        
-        menu =args[0];
-        
-        for (int i = 0; i < args.length; i++) {
-            if(i==0){
-               menu = args[0]; 
-            }
-        }
-        
-        String dir = "dataset/german/input/"; // path to your CSV file
-        List<String> files = FileFolderUtils.getSpecificFiles(dir, "entity", ".csv");
-        Neo4j app = new Neo4j(uri, user, password);
+    // Default Neo4j connection info
+    String uri = "bolt://neo4j:7687";
+    String user = "neo4j";
+    String password = "password";
+    String dir = "dataset/german/input/"; // default CSV path
+    String menu = "CREATE"; // default action
+
+    // Parse arguments
+    // args[0] = menu, args[1] = CSV dir, args[2] = URI, args[3] = user, args[4] = password
+    if (args.length >= 1) menu = args[0];
+    if (args.length >= 2) dir = args[1];
+    if (args.length >= 3) uri = args[2];
+    if (args.length >= 4) user = args[3];
+    if (args.length >= 5) password = args[4];
+
+    List<String> files = FileFolderUtils.getSpecificFiles(dir, "entity", ".csv");
+    Neo4j app = new Neo4j(uri, user, password);
+
+ 
 
         if (menu.contains(CREATE)) {
             for (String csvPath : files) {
